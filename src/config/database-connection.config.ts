@@ -1,6 +1,6 @@
 import { DatabaseType } from "typeorm";
 import { Injectable } from "@nestjs/common";
-import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
+import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from "@nestjs/typeorm";
 
 type PostgresType = 'postgres';
 
