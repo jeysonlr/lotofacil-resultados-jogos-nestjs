@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+###################################################################
+#                                                                 #
+# DESCOMENTAR APENAS SE QUISER UTILIZAR O DOCKER PARA RODAR A API #
+#                                                                 #
+###################################################################
+
+  api:
+    image: geoname-api
+    build: ./.docker
+    container_name: geoname-api
+    restart: always
+    volumes:
+    - .:/var/www/html
+    working_dir: '/var/www/html'
+    ports:
+    - '7001:7001'
+    depends_on:
+      - pgsql
+
+# CONTAINER DO BANCO DE DADOS
+  pgsql:
+    image: postgres:alpine
+    ports:
+      - '5432:5432'
+    container_name: 'pgsql'
+    restart: always
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpassword
+
+# CONTAINER DO SISTEMA GERENCIADOR DE BANCO DE DADOS (SGBD)
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  pg-data:
