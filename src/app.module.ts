@@ -10,11 +10,11 @@ import { LotteriesModule } from './lotteries/lotteries.module';
             envFilePath: `env/.${process.env.NODE_ENV}.env`,
             isGlobal: true,
         }),
-        // TypeOrmModule.forRootAsync({
-        //     imports: [ConfigModule],
-        //     useClass: DatabaseTypeOrmConfig,
-        //     name: 'databaseConnection',
-        // }),
+        TypeOrmModule.forRootAsync({
+            imports: [ConfigModule],
+            useClass: DatabaseTypeOrmConfig,
+            name: 'databaseConnection',
+        }),
         HttpModule,
         LotteriesModule,
     ],

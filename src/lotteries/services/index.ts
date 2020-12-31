@@ -1,1 +1,1 @@
-export * from './lotteries.service';
+export * from './lotofacil.service';

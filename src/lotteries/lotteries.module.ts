@@ -1,12 +1,19 @@
 import { Module } from '@nestjs/common';
-import { StringFormatterHelper } from 'src/shared/helper';
+import { LotofacilService } from './services';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { LotteiresController } from './controllers';
-import { LotteriesService } from './services';
+import { LotofacilRepository } from './repositories';
+import { StringFormatterHelper } from 'src/shared/helper';
 
 @Module({
+    imports: [
+        TypeOrmModule.forFeature([
+            LotofacilRepository,
+        ], 'databaseConnection'),
+    ],
     providers: [
         StringFormatterHelper,
-        LotteriesService,
+        LotofacilService,
     ],
     controllers: [
         LotteiresController,
