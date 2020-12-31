@@ -30,13 +30,16 @@
     "class-transformer": "^0.3.1",
     "class-validator": "^0.12.2",
     "cross-env": "^7.0.3",
+    "exceljs": "^4.2.0",
+    "node-xlsx": "^0.15.0",
     "pg": "^8.5.1",
     "postgres-interval": "^3.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.3",
     "swagger-ui-express": "^4.1.5",
-    "typeorm": "^0.2.29"
+    "typeorm": "^0.2.29",
+    "xlsx": "^0.16.9"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.5.1",
