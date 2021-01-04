@@ -29,7 +29,7 @@ export class LotofacilService {
         var readArchive = await xlsx.parse(filePath)
         const table = readArchive[0].data;
 
-        var tableEdit = table.slice(7, 2126);
+        var tableEdit = table.slice(7);
 
         for (var i = 0; i < tableEdit.length; i++) {
             const lotofacilDto = new LotofacilDto();

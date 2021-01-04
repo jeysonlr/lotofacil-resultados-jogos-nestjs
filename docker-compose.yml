@@ -21,11 +21,11 @@ services:
 #       - pgsql
 
 # CONTAINER DO BANCO DE DADOS
-  pgsql:
+  bancopgsql:
     image: postgres:alpine
     ports:
       - '5432:5432'
-    container_name: 'pgsql'
+    container_name: 'bancopgsql'
     restart: always
     volumes:
       - pg-data:/var/lib/postgresql/data
