@@ -1,6 +1,6 @@
 import { LotofacilDto } from '../dtos';
 import { LotofacilEntity } from '../entities';
-import { Repository, EntityRepository } from 'typeorm';
+import { Repository, EntityRepository, EntityManager } from 'typeorm';
 import { StringFormatterHelper } from 'src/shared/helper';
 /**
  * @author Jeyson Luiz Romualdo
@@ -11,7 +11,8 @@ import { StringFormatterHelper } from 'src/shared/helper';
 @EntityRepository(LotofacilEntity)
 export class LotofacilRepository extends Repository<LotofacilEntity> {
     constructor(
-        private readonly stringFormatter: StringFormatterHelper
+        private readonly stringFormatter: StringFormatterHelper,
+        private entityManager: EntityManager
     ) { super() }
 
     /**
@@ -25,5 +26,14 @@ export class LotofacilRepository extends Repository<LotofacilEntity> {
         } catch (error) {
             console.log(error)
         }
+    }
+
+    /**
+     * @param {string} query
+     * @return {*}  {Promise<[]>}
+     * @memberof LotofacilRepository
+     */
+    async findGames(query: string): Promise<[]> {
+        return await this.entityManager.connection.query(query);
     }
 }

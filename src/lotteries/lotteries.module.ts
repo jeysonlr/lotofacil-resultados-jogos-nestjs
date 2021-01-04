@@ -3,7 +3,8 @@ import { LotofacilService } from './services';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { LotteiresController } from './controllers';
 import { LotofacilRepository } from './repositories';
-import { StringFormatterHelper } from 'src/shared/helper';
+import { OpenFileHelper, ReadDqlFileHelper, ReadFileHelper, StringFormatterHelper } from 'src/shared/helper';
+// import { EntityManager } from 'typeorm';
 
 @Module({
     imports: [
@@ -14,6 +15,10 @@ import { StringFormatterHelper } from 'src/shared/helper';
     providers: [
         StringFormatterHelper,
         LotofacilService,
+        ReadDqlFileHelper,
+        ReadFileHelper,
+        OpenFileHelper,
+        // EntityManager
     ],
     controllers: [
         LotteiresController,
