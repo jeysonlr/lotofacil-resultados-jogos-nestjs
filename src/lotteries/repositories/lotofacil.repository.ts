@@ -1,7 +1,8 @@
 import { LotofacilDto } from '../dtos';
 import { LotofacilEntity } from '../entities';
-import { Repository, EntityRepository, EntityManager } from 'typeorm';
 import { StringFormatterHelper } from 'src/shared/helper';
+import { Repository, EntityRepository, EntityManager } from 'typeorm';
+
 /**
  * @author Jeyson Luiz Romualdo
  * @export
@@ -30,7 +31,7 @@ export class LotofacilRepository extends Repository<LotofacilEntity> {
 
     /**
      * @param {string} query
-     * @return {*}  {Promise<[]>}
+     * @return {*}  {Promise<any>}
      * @memberof LotofacilRepository
      */
     async findGames(query: string): Promise<any> {
