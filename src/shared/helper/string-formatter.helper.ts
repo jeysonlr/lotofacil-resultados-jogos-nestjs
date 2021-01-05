@@ -15,6 +15,13 @@ interface String {
  */
 @Injectable()
 export class StringFormatterHelper extends String {
+
+    /**
+     * @param {string} str
+     * @param {...string[]} replacements
+     * @return {*}
+     * @memberof StringFormatterHelper
+     */
     format(str: string, ...replacements: string[]) {
         let i = 0;
         return str.replace(/{}/g, function () {

@@ -2,24 +2,14 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+# ATENCÃO, siga atentamente todos os passos, na sequência
 
-## Rodando com Docker
-
-```docker
-$ git config core.autocrlf false
-
+## Iniciando containês do banco e do (SGBD)
+```
 $ docker-compose up -d --build
 
 ```
-
-## Rodando localmente
-
-```bash
-$ git config core.autocrlf false
-
-$ yarn install
-```
-
+# após instalacão e conteinêrs rodando
 ## Acessando sitema gerenciador de banco de dados (SGBD)
 ```
 localhot:8080
@@ -28,53 +18,55 @@ utilizar as credencias utilizadas no docker-compose.yml
 
 exemplo:
 SISTEMA: postgreSQL
-SERVIDOR: pgsql (nome do container utilizado no docker-compose.yml)
+SERVIDOR: bancopgsql (nome do container utilizado no docker-compose.yml)
 USUARIO: (usuario e senha utilizados no docker-compose.yml)
 SENHA: (usuario e senha utilizados no docker-compose.yml)
 BASE DE DADOS: nao precisa informar valor
 
 ```
 
-### BONUS
+# ATENCÃO
+## Após acessar o (SGBD) Sistema Gerenciador de banco de dados
 ```
-Caso nao queira popular de 1 em 1,
+$ criar uma database com nome de loterias
 
-Rota para popular ou limpar tabelas de estado e cidade, utilizando api do IBGE ( https://servicodados.ibge.gov.br/api/docs/localidades )
-
-localhost:7001/populateorexclude
-
+Após criar a database, vá ao código, na pasta
+    SRC/CONFIG/database-connection.config.ts
+e certifique-se que a linha contendo
+    synchronize: true,
+esteja descomentada
 ```
 
-## Documentacão de rotas da api
+## Rodando localmente a API
+
+```bash
+$ git config core.autocrlf false
+
+$ yarn
+    ou
+$ npm install
 ```
-http://localhost:7001/documentation
+
+## Documentacão com as rotas da API
+```
+http://localhost:3333/documentation
 ```
 
 ## Running the app
 
 ```bash
-# development
-$ npm run start
 
 # watch mode
+$ yarn start:dev
+    ou
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
+### email
+``
+jeysonlr@gmail.com
+``
 
 ## License
 

@@ -1,6 +1,5 @@
 import { LotofacilDto } from '../dtos';
 import { LotofacilEntity } from '../entities';
-import { StringFormatterHelper } from 'src/shared/helper';
 import { Repository, EntityRepository, EntityManager } from 'typeorm';
 
 /**
@@ -12,7 +11,6 @@ import { Repository, EntityRepository, EntityManager } from 'typeorm';
 @EntityRepository(LotofacilEntity)
 export class LotofacilRepository extends Repository<LotofacilEntity> {
     constructor(
-        private readonly stringFormatter: StringFormatterHelper,
         private entityManager: EntityManager
     ) { super() }
 
@@ -22,11 +20,7 @@ export class LotofacilRepository extends Repository<LotofacilEntity> {
      * @memberof LotofacilRepository
      */
     async createLotofacil(lotofacilDto: LotofacilDto): Promise<LotofacilEntity> {
-        try {
-            return await this.save(lotofacilDto);
-        } catch (error) {
-            console.log(error)
-        }
+        return await this.save(lotofacilDto);
     }
 
     /**
@@ -36,5 +30,13 @@ export class LotofacilRepository extends Repository<LotofacilEntity> {
      */
     async findGames(query: string): Promise<any> {
         return await this.entityManager.connection.query(query);
+    }
+
+    /**
+     * @return {*}  {Promise<LotofacilEntity[]>}
+     * @memberof LotofacilRepository
+     */
+    async findAll():Promise<LotofacilEntity[] | null> {
+        return await this.find();
     }
 }

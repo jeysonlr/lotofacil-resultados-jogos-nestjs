@@ -1,5 +1,4 @@
-import { IsNotEmpty } from 'class-validator';
-import { Column } from 'typeorm';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 /**
  * @author Jeyson Luiz Romualdo
@@ -8,74 +7,74 @@ import { Column } from 'typeorm';
  */
 export class LotofacilDto {
     @IsNotEmpty()
-    @Column('varchar')
+    @IsString()
     loteria: string;
 
     @IsNotEmpty()
-    @Column('integer')
+    @IsNumber()
     numeroConcurso: number;
 
     @IsNotEmpty()
-    @Column('varchar')
+    @IsString()
     dataSorteio: string
 
     @IsNotEmpty()
-    @Column('integer')
+    @IsNumber()
     bola1: number
 
     @IsNotEmpty()
-    @Column('integer')
+    @IsNumber()
     bola2: number
 
     @IsNotEmpty()
-    @Column('integer')
+    @IsNumber()
     bola3: number
 
     @IsNotEmpty()
-    @Column('integer')
+    @IsNumber()
     bola4: number
 
     @IsNotEmpty()
-    @Column('integer')
+    @IsNumber()
     bola5: number
 
     @IsNotEmpty()
-    @Column('integer')
+    @IsNumber()
     bola6: number
 
     @IsNotEmpty()
-    @Column('integer')
+    @IsNumber()
     bola7: number
 
     @IsNotEmpty()
-    @Column('integer')
+    @IsNumber()
     bola8: number
 
     @IsNotEmpty()
-    @Column('integer')
+    @IsNumber()
     bola9: number
 
     @IsNotEmpty()
-    @Column('integer')
+    @IsNumber()
     bola10: number
 
     @IsNotEmpty()
-    @Column('integer')
+    @IsNumber()
     bola11: number
 
     @IsNotEmpty()
-    @Column('integer')
+    @IsNumber()
     bola12: number
 
     @IsNotEmpty()
-    @Column('integer')
+    @IsNumber()
     bola13: number
 
     @IsNotEmpty()
-    @Column('integer')
+    @IsNumber()
     bola14: number
 
     @IsNotEmpty()
-    @Column('integer')
+    @IsNumber()
     bola15: number
 }

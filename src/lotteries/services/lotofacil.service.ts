@@ -1,11 +1,12 @@
 import xlsx from 'node-xlsx';
 import * as path from 'path';
 import { Injectable } from '@nestjs/common';
+import { ERROR_MESSAGES } from '../constants';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ReadDqlFileHelper } from 'src/shared/helper';
 import { LotofacilRepository } from '../repositories';
-import { ReadDqlFileHelper, StringFormatterHelper } from 'src/shared/helper';
-import { LotofacilDto, ResultGameLotofacil, MoreTimesTheyLeftDto, LessTimesLeftDto, RandomGames } from '../dtos';
-import { SUCCESS_MESSAGES } from '../constants';
+import { PopulateDatabaseException } from '../exceptions';
+import { LotofacilDto, ResultGameLotofacilDto, MoreTimesTheyLeftDto, LessTimesLeftDto, RandomGamesDto } from '../dtos';
 
 /**
  * @author Jeyson Luiz Romualdo
@@ -17,11 +18,11 @@ export class LotofacilService {
     constructor(
         @InjectRepository(LotofacilRepository, 'databaseConnection')
         private readonly lotofacilRepository: LotofacilRepository,
-        private readonly stringFormatter: StringFormatterHelper,
         private readDqlFileHelper: ReadDqlFileHelper
     ) { }
 
     /**
+     * popula base de dados com dados do arquivo excel
      * @return {*}  {Promise<string>}
      * @memberof LotofacilService
      */
@@ -32,6 +33,10 @@ export class LotofacilService {
         const table = readArchive[0].data;
 
         var tableEdit = table.slice(7);
+
+        const responseDatabase = await this.lotofacilRepository.findAll();
+
+        if (responseDatabase.length > 0) throw new PopulateDatabaseException(ERROR_MESSAGES.DATABASE_ALREADY_POPULATE);
 
         const result = tableEdit.map(async (data) => {
             const lotofacilDto = new LotofacilDto();
@@ -60,11 +65,11 @@ export class LotofacilService {
     }
 
     /**
-     * @return {*}  {Promise<ResultGameLotofacil>}
+     * @return {*}  {Promise<ResultGameLotofacilDto>}
      * @memberof LotofacilService
      */
-    async findGames(): Promise<ResultGameLotofacil> {
-        const sqlFile = await this.readDqlFileHelper.read('lotofacil.sql');
+    async findGames(): Promise<ResultGameLotofacilDto> {
+        const sqlFile = await this.readDqlFileHelper.read(process.env.NAME_LOTOFACIL + '.sql');
         const resultQuery = await this.lotofacilRepository.findGames(sqlFile);
 
         const moreTimesTheyLeft = resultQuery.slice(0, 15);
@@ -88,12 +93,14 @@ export class LotofacilService {
             return lessTimesLeftDto;
         });
 
-        const randomGamesDto = new RandomGames();
+        /* gera três jogos aleatórios */
+        const randomGamesDto = new RandomGamesDto();
         randomGamesDto.randomGamesOne = await this.getRandomIntInclusive();
         randomGamesDto.randomGamesTwo = await this.getRandomIntInclusive();
         randomGamesDto.randomGamesThree = await this.getRandomIntInclusive();
 
-        const resultGameLotofacil = new ResultGameLotofacil();
+        /* retorna todos dados */
+        const resultGameLotofacil = new ResultGameLotofacilDto();
         resultGameLotofacil.moreTimesTheyLeft = resultMoreTimesTheyLeft;
         resultGameLotofacil.lessTimesLeft = resultLessTimesLeft;
         resultGameLotofacil.randomGames = randomGamesDto;
@@ -101,9 +108,13 @@ export class LotofacilService {
         return resultGameLotofacil;
     }
 
+    /**
+     * @return {*}  {Promise<number[]>}
+     * @memberof LotofacilService
+     */
     async getRandomIntInclusive(): Promise<number[]> {
 
-        const randomNumbers = [Number()];
+        const randomNumbers = [];
         while (randomNumbers.length < 15) {
             var aleatoryNumber = Math.floor(Math.random() * 25 + 1);
 

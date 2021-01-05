@@ -2,6 +2,7 @@ import { forEach, map } from 'lodash';
 import { ValidationError } from 'class-validator';
 
 /**
+ * @author Jeyson Luiz Romualdo
  * @export
  * @interface RequestErrorInterface
  */

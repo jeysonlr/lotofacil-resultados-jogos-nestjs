@@ -1,6 +1,7 @@
-import { ResultGameLotofacil } from '../dtos';
+import { ApiTags } from '@nestjs/swagger';
 import { LotofacilService } from '../services';
 import { Controller, Get } from '@nestjs/common';
+import { ResultGameLotofacilDto } from '../dtos';
 import { OkResponseDataDto } from 'src/shared/dto';
 import { ROUTES, SUCCESS_MESSAGES } from '../constants';
 
@@ -9,6 +10,7 @@ import { ROUTES, SUCCESS_MESSAGES } from '../constants';
  * @export
  * @class LotofacilController
  */
+@ApiTags('Lotofácil')
 @Controller(ROUTES.LOTOFACIL)
 export class LotofacilController {
     constructor(
@@ -26,7 +28,7 @@ export class LotofacilController {
     @Get()
     async getGames() {
         const lotofacil = await this.lotteriesService.findGames();
-        return new OkResponseDataDto<ResultGameLotofacil>(
+        return new OkResponseDataDto<ResultGameLotofacilDto>(
             SUCCESS_MESSAGES.GET_SUCCESS, lotofacil
         );
     }

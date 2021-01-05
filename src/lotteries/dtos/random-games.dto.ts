@@ -1,6 +1,11 @@
 import { IsNotEmpty } from "class-validator";
 
-export class RandomGames {
+/**
+ * @author Jeyson Luiz Romualdo
+ * @export
+ * @class RandomGamesDto
+ */
+export class RandomGamesDto {
     @IsNotEmpty()
     randomGamesOne: number[];
 

@@ -14,6 +14,12 @@ export class ReadFileHelper {
         protected openFileHelper: OpenFileHelper
     ) { }
 
+    /**
+     * @param {string} path
+     * @param {string} filename
+     * @return {*}  {string}
+     * @memberof ReadFileHelper
+     */
     read(path: string, filename: string): string {
         try {
             const file = `${path}/${filename}`;

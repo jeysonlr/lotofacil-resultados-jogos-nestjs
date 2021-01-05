@@ -14,6 +14,11 @@ export class ReadDqlFileHelper {
         protected readFileHelper: ReadFileHelper,
     ) { }
 
+    /**
+     * @param {string} filename
+     * @return {*}  {string}
+     * @memberof ReadDqlFileHelper
+     */
     read(filename: string): string {
         try {
             const path = PATH.PATH_DATA_DQL;
