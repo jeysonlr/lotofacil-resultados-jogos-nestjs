@@ -33,7 +33,7 @@ export class LotofacilRepository extends Repository<LotofacilEntity> {
      * @return {*}  {Promise<[]>}
      * @memberof LotofacilRepository
      */
-    async findGames(query: string): Promise<[]> {
+    async findGames(query: string): Promise<any> {
         return await this.entityManager.connection.query(query);
     }
 }
