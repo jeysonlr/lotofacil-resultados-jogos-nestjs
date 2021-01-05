@@ -12,7 +12,7 @@ $ docker-compose up -d --build
 # após instalacão e conteinêrs rodando
 ## Acessando sitema gerenciador de banco de dados (SGBD)
 ```
-localhot:8080
+http://localhot:8080
 
 utilizar as credencias utilizadas no docker-compose.yml
 
