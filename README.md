@@ -1,10 +1,15 @@
 ## Descricao
+```
+Api para trazer números que mais e menos vezes saíram durante todos os concursos, e com um gerador de tres jogos aleatórios.
+
+Atualizada concurso 2132 do dia 14/01/2021
+```
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 # ATENCÃO, siga atentamente todos os passos, na sequência
 
-## Iniciando containês do banco e do (SGBD)
+## Iniciando containêrs do banco de dados e do (SGBD)
 ```
 $ docker-compose up -d --build
 
@@ -12,29 +17,19 @@ $ docker-compose up -d --build
 # após instalacão e conteinêrs rodando
 ## Acessando sitema gerenciador de banco de dados (SGBD)
 ```
-http://localhot:8080
+acesse via http://localhot:8080
 
 utilizar as credencias utilizadas no docker-compose.yml
 
 exemplo:
 SISTEMA: postgreSQL
-SERVIDOR: bancopgsql (nome do container utilizado no docker-compose.yml)
-USUARIO: (usuario e senha utilizados no docker-compose.yml)
-SENHA: (usuario e senha utilizados no docker-compose.yml)
+SERVIDOR: loterias (nome do container utilizado no docker-compose.yml)
+USUARIO: pguser (usuario e senha utilizados no docker-compose.yml)
+SENHA: pgpassword (usuario e senha utilizados no docker-compose.yml)
 BASE DE DADOS: nao precisa informar valor
 
-```
+Após acessar o SGBD, crie uma base de dados chamada "loterias"
 
-# ATENCÃO
-## Após acessar o (SGBD) Sistema Gerenciador de banco de dados
-```
-$ criar uma database com nome de loterias
-
-Após criar a database, vá ao código, na pasta
-    SRC/CONFIG/database-connection.config.ts
-e certifique-se que a linha contendo
-    synchronize: true,
-esteja descomentada
 ```
 
 ## Rodando localmente a API
