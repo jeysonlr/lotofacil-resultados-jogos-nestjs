@@ -47,6 +47,8 @@ $ npm install
 http://localhost:3333/documentation
 ```
 
+## primeiro popular a tabela e depois consumir os resultados
+
 ## Running the app
 
 ```bash
