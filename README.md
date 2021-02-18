@@ -2,7 +2,7 @@
 ```
 Api para trazer números que mais e menos vezes saíram durante todos os concursos, e com um gerador de tres jogos aleatórios.
 
-Atualizada concurso 2145 do dia 29/01/2021
+Atualizada concurso 2159 do dia 17/02/2021
 
 https://asloterias.com.br/download-todos-resultados-lotofacil
 ```
@@ -25,12 +25,11 @@ utilizar as credencias utilizadas no docker-compose.yml
 
 exemplo:
 SISTEMA: postgreSQL
-SERVIDOR: loterias (nome do container utilizado no docker-compose.yml)
+SERVIDOR: loteriapgsql (nome do container utilizado no docker-compose.yml)
 USUARIO: pguser (usuario e senha utilizados no docker-compose.yml)
 SENHA: pgpassword (usuario e senha utilizados no docker-compose.yml)
 BASE DE DADOS: nao precisa informar valor
 
-Após acessar o SGBD, crie uma base de dados chamada "loterias"
 
 ```
 
