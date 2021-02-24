@@ -8,7 +8,6 @@ services:
     ports:
       - '5432:5432'
     container_name: 'loteriapgsql'
-    # restart: always
     volumes:
       - pg-data:/var/lib/postgresql/data
     environment:
@@ -18,7 +17,6 @@ services:
 # CONTAINER DO SISTEMA GERENCIADOR DE BANCO DE DADOS (SGBD)
   adminer:
     image: adminer
-    restart: always
     ports:
       - 8080:8080
 
