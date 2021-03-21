@@ -2,7 +2,7 @@
 ```
 Api para trazer números que mais e menos vezes saíram durante todos os concursos, e com um gerador de tres jogos aleatórios.
 
-Atualizada concurso 2173 do dia 05/03/2021
+Atualizada concurso 2186 do dia 20/03/2021
 
 https://asloterias.com.br/download-todos-resultados-lotofacil
 ```
