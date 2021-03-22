@@ -29,7 +29,10 @@ export class LotofacilService {
      */
     async populateDatabaseLotofacil(): Promise<void> {
         const findAllRegisters = await this.getAllRegisters();
-        await this.removeRegistersOfGames(findAllRegisters)
+        
+        if (findAllRegisters.length > 0) {
+            await this.removeRegistersOfGames(findAllRegisters)
+        }
 
         const filePath = path.resolve(process.env.DIRNAME + process.env.LOTOFACIL);
 
