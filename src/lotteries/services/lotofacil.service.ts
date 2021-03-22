@@ -29,7 +29,7 @@ export class LotofacilService {
      */
     async populateDatabaseLotofacil(): Promise<void> {
         const findAllRegisters = await this.getAllRegisters();
-        
+
         if (findAllRegisters.length > 0) {
             await this.removeRegistersOfGames(findAllRegisters)
         }
