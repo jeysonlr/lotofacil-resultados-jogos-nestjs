@@ -2,6 +2,7 @@ import xlsx from 'node-xlsx';
 import * as path from 'path';
 import { Injectable } from '@nestjs/common';
 import { ERROR_MESSAGES } from '../constants';
+import { LotofacilEntity } from '../entities';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ReadDqlFileHelper } from 'src/shared/helper';
 import { LotofacilRepository } from '../repositories';
@@ -27,6 +28,9 @@ export class LotofacilService {
      * @memberof LotofacilService
      */
     async populateDatabaseLotofacil(): Promise<void> {
+        const findAllRegisters = await this.getAllRegisters();
+        await this.removeRegistersOfGames(findAllRegisters)
+
         const filePath = path.resolve(process.env.DIRNAME + process.env.LOTOFACIL);
 
         var readArchive = await xlsx.parse(filePath);
@@ -123,5 +127,25 @@ export class LotofacilService {
             }
         }
         return await randomNumbers;
+    }
+
+    /**
+     * @return {*}  {Promise<LotofacilEntity[]>}
+     * @memberof LotofacilService
+     */
+    async getAllRegisters(): Promise<LotofacilEntity[]> {
+        return await this.lotofacilRepository.findAll();
+    }
+
+    /**
+     * @param {LotofacilEntity[]} findAllRegisters
+     * @return {*}  {Promise<void>}
+     * @memberof LotofacilService
+     */
+    async removeRegistersOfGames(findAllRegisters: LotofacilEntity[]): Promise<void> {
+        const result = await findAllRegisters.map(async (response) => {
+            await this.lotofacilRepository.delete(response.loteriaId);
+        });
+        await Promise.all(result)
     }
 }

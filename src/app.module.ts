@@ -7,7 +7,7 @@ import { LotteriesModule } from './lotteries/lotteries.module';
 @Module({
     imports: [
         ConfigModule.forRoot({
-            envFilePath: `env/.${process.env.NODE_ENV}.env`,
+            envFilePath: `.${process.env.NODE_ENV}.env`,
             isGlobal: true,
         }),
         TypeOrmModule.forRootAsync({

@@ -24,6 +24,15 @@ export class LotofacilRepository extends Repository<LotofacilEntity> {
     }
 
     /**
+     * @param {number} lotoreyId
+     * @return {*}  {Promise<LotofacilEntity>}
+     * @memberof LotofacilRepository
+     */
+    async findByLoteryId(lotoreyId: number): Promise<LotofacilEntity> {
+        return await this.findOne(lotoreyId);
+    }
+
+    /**
      * @param {string} query
      * @return {*}  {Promise<any>}
      * @memberof LotofacilRepository

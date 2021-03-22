@@ -1,8 +1,8 @@
-import { LotteriesModule } from './lotteries/lotteries.module';
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from './shared/pipes';
 import { HttpExceptionFilter } from './shared/exceptions';
+import { LotteriesModule } from './lotteries/lotteries.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
@@ -37,6 +37,6 @@ async function bootstrap() {
     });
     SwaggerModule.setup('documentation', app, document);
 
-    await app.listen(3333);
+    await app.listen(process.env.PORT || 3333);
 }
 bootstrap();
