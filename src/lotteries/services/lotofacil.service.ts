@@ -34,41 +34,41 @@ export class LotofacilService {
             await this.removeRegistersOfGames(findAllRegisters)
         }
 
-        const filePath = path.resolve(process.env.DIRNAME + process.env.LOTOFACIL);
+//         const filePath = path.resolve(process.env.DIRNAME + process.env.LOTOFACIL);
 
-        var readArchive = await xlsx.parse(filePath);
-        const table = readArchive[0].data;
+//         var readArchive = await xlsx.parse(filePath);
+//         const table = readArchive[0].data;
 
-        var tableEdit = table.slice(7);
+//         var tableEdit = table.slice(7);
 
-        const responseDatabase = await this.lotofacilRepository.findAll();
+//         const responseDatabase = await this.lotofacilRepository.findAll();
 
-        if (responseDatabase.length > 0) throw new PopulateDatabaseException(ERROR_MESSAGES.DATABASE_ALREADY_POPULATE);
+//         if (responseDatabase.length > 0) throw new PopulateDatabaseException(ERROR_MESSAGES.DATABASE_ALREADY_POPULATE);
 
-        const result = tableEdit.map(async (data) => {
-            const lotofacilDto = new LotofacilDto();
-            lotofacilDto.numeroConcurso = data[0];
-            lotofacilDto.dataSorteio = data[1];
-            lotofacilDto.loteria = process.env.NAME_LOTOFACIL;
-            lotofacilDto.bola1 = data[2];
-            lotofacilDto.bola2 = data[3];
-            lotofacilDto.bola3 = data[4];
-            lotofacilDto.bola4 = data[5];
-            lotofacilDto.bola5 = data[6];
-            lotofacilDto.bola6 = data[7];
-            lotofacilDto.bola7 = data[8];
-            lotofacilDto.bola8 = data[9];
-            lotofacilDto.bola9 = data[10];
-            lotofacilDto.bola10 = data[11];
-            lotofacilDto.bola11 = data[12];
-            lotofacilDto.bola12 = data[13];
-            lotofacilDto.bola13 = data[14];
-            lotofacilDto.bola14 = data[15];
-            lotofacilDto.bola15 = data[16];
+//         const result = tableEdit.map(async (data) => {
+//             const lotofacilDto = new LotofacilDto();
+//             lotofacilDto.numeroConcurso = data[0];
+//             lotofacilDto.dataSorteio = data[1];
+//             lotofacilDto.loteria = process.env.NAME_LOTOFACIL;
+//             lotofacilDto.bola1 = data[2];
+//             lotofacilDto.bola2 = data[3];
+//             lotofacilDto.bola3 = data[4];
+//             lotofacilDto.bola4 = data[5];
+//             lotofacilDto.bola5 = data[6];
+//             lotofacilDto.bola6 = data[7];
+//             lotofacilDto.bola7 = data[8];
+//             lotofacilDto.bola8 = data[9];
+//             lotofacilDto.bola9 = data[10];
+//             lotofacilDto.bola10 = data[11];
+//             lotofacilDto.bola11 = data[12];
+//             lotofacilDto.bola12 = data[13];
+//             lotofacilDto.bola13 = data[14];
+//             lotofacilDto.bola14 = data[15];
+//             lotofacilDto.bola15 = data[16];
 
-            await this.lotofacilRepository.createLotofacil(lotofacilDto);
-        });
-        await Promise.all(result)
+//             await this.lotofacilRepository.createLotofacil(lotofacilDto);
+//         });
+//         await Promise.all(result)
     }
 
     /**
