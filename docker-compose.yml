@@ -20,5 +20,14 @@ services:
     ports:
       - 8080:8080
 
+  app:
+    container_name: loteria
+    restart: always
+    build: .
+    ports:
+        - "3333:3333"
+    depends_on:
+        - loteriapgsql
+
 volumes:
   pg-data:
