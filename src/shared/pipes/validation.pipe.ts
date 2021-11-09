@@ -1,5 +1,5 @@
 import { isEmpty } from 'lodash';
-import { RequestError } from '../dto';
+import { RequestError } from '../dtos';
 import { validate } from 'class-validator';
 import { ERROR_MESSAGES } from '../constants';
 import { plainToClass } from 'class-transformer';

@@ -3,6 +3,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { DatabaseTypeOrmConfig } from "./config";
 import { HttpModule, Module } from "@nestjs/common";
 import { LotteriesModule } from './lotteries/lotteries.module';
+import { ApiInfoController } from "./shared/controllers";
 
 @Module({
     imports: [
@@ -18,9 +19,7 @@ import { LotteriesModule } from './lotteries/lotteries.module';
         HttpModule,
         LotteriesModule,
     ],
-    exports: [
-        HttpModule,
-        ConfigModule,
-    ]
+    exports: [HttpModule, ConfigModule],
+    controllers: [ApiInfoController],
 })
 export class AppModule { }

@@ -31,9 +31,7 @@ async function bootstrap() {
             'jeysonlr@gmail.com')
         .build();
     const document = SwaggerModule.createDocument(app, options, {
-        include: [
-            LotteriesModule,
-        ],
+        include: [AppModule, LotteriesModule],
     });
     SwaggerModule.setup('documentation', app, document);
 

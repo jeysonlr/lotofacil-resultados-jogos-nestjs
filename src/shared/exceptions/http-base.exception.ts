@@ -1,5 +1,5 @@
 import { isObject, isString } from 'util';
-import { ErrorResponseDataDto, RequestError } from '../dto';
+import { ErrorResponseDataDto, RequestError } from '../dtos';
 import { HttpInternalMessages } from '../enums';
 
 
