@@ -31,7 +31,7 @@ export class LotofacilService {
         const findAllRegisters = await this.getAllRegisters();
 
         if (findAllRegisters.length > 0) {
-            await this.removeRegistersOfGames(findAllRegisters)
+            await this.removeRegistersOfGames(findAllRegisters);
         }
 
         const filePath = path.resolve(process.env.DIRNAME + process.env.LOTOFACIL);
