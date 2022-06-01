@@ -2,7 +2,7 @@
 ```
 Api para trazer números que mais e menos vezes saíram durante todos os concursos, e com um gerador de tres jogos aleatórios.
 
-Atualizada concurso 2265 do dia 25/06/2021
+Atualizada concurso 2535 do dia 31/05/2022
 
 https://asloterias.com.br/download-todos-resultados-lotofacil
 ```
